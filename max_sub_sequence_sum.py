@@ -1,5 +1,8 @@
 # -*- coding:utf-8 -*-
-x = [1, 2, 3, 4, 2, 3, 4, 51, 1, -1, 3, 0]
+# x = '-2 11 -4 13 -5 -2'
+x = raw_input()
+x = x.split(' ')
+x = [float(i) for i in x]
 
 
 def max_sub_sequence_sum(sub_sequence):
@@ -18,3 +21,19 @@ def max_sub_sequence_sum(sub_sequence):
 
 
 print max_sub_sequence_sum(x)
+
+# 在线处理
+
+
+def better_max_sub_sequence_sum(sub_sequence):
+    now_list = max_list = 0
+    for k in range(len(sub_sequence)):
+        now_list += sub_sequence[k]
+        if now_list > max_list:
+            max_list = now_list
+        elif now_list < 0:
+            now_list = 0
+    return max_list
+
+
+print better_max_sub_sequence_sum(x)
